@@ -1,0 +1,112 @@
+{
+  "summary": {
+    "n_attempts": 59065,
+    "n_users": 7500,
+    "n_trips": 9087,
+    "n_nba_events": 27430,
+    "blended_success_rate": 0.5395,
+    "checksum_attempts": "a882432e58330bcf"
+  },
+  "tests": [
+    {
+      "test": "1_blended_success_rate",
+      "passed": false,
+      "detail": "blended=0.539 target=0.61 (deviation 7.1pp) -- NOTE: exceeds tolerance; see calibration note below"
+    },
+    {
+      "test": "1b_per_corridor_success",
+      "passed": false,
+      "detail": {
+        "max_dev_pp": 34.1,
+        "corridor_rates": {
+          "IN_AE": 0.45,
+          "IN_ARRIVAL": 0.707,
+          "IN_BT": 0.442,
+          "IN_FR": 0.336,
+          "IN_KH": 0.438,
+          "IN_LK": 0.269,
+          "IN_MU": 0.293,
+          "IN_NP": 0.449,
+          "IN_QA": 0.421,
+          "IN_SG": 0.435,
+          "OTHER_R2": 0.491
+        }
+      }
+    },
+    {
+      "test": "2_ticket_distribution",
+      "passed": true,
+      "detail": "non-positive tickets=0, mean=2575, median=1842"
+    },
+    {
+      "test": "3_decline_reason_mix",
+      "passed": true,
+      "detail": {
+        "max_share": 0.356,
+        "top_reason": "ISSUER_NOT_ENABLED",
+        "sums_to_1": true
+      }
+    },
+    {
+      "test": "4_cohort_sizing",
+      "passed": true,
+      "detail": {
+        "IN|I-1": 0.44,
+        "IN|I-3": 0.325,
+        "IN|I-2": 0.121,
+        "IN|I-4": 0.114,
+        "OUT|O-1": 0.263,
+        "OUT|O-2": 0.243,
+        "OUT|O-6": 0.161,
+        "OUT|O-5": 0.132,
+        "OUT|O-3": 0.125,
+        "OUT|O-4": 0.076
+      }
+    },
+    {
+      "test": "5_arm_balance_smd",
+      "passed": true,
+      "detail": {
+        "txn_amount_inr": 0.0082,
+        "fx_markup_bps": 0.0056
+      }
+    },
+    {
+      "test": "6_tau_recoverable",
+      "passed": false,
+      "detail": {
+        "top_decile_corr": -0.0567,
+        "beats_propensity_baseline_on_auuc": false,
+        "note": "FAILS on this generator draft -- observable Tier-1/Tier-2 features carry insufficient signal about the latent nudge-receptivity trait. Disclosed, not masked; see uplift_model_report.json and roadmap T1->T2->T4 sequencing (spec \u00a711)."
+      }
+    },
+    {
+      "test": "7_seasonality_autocorr",
+      "passed": true,
+      "detail": "lag-12 autocorr=-0.05466154657583738"
+    },
+    {
+      "test": "8_leakage_flagged",
+      "passed": true,
+      "detail": {
+        "leak_columns_in_raw_fact_table": [
+          "counterfactual_outcome"
+        ],
+        "note": "counterfactual_outcome & *_true fields are generator-only per \u00a76.2 schema; uplift_model.py drops them before fitting - verified in that script's assertion."
+      }
+    },
+    {
+      "test": "9_tokenised_ids_no_pii",
+      "passed": true,
+      "detail": {
+        "id_columns_checked": [
+          "attempt_id",
+          "trip_id",
+          "user_id",
+          "merchant_id",
+          "nba_event_id"
+        ]
+      }
+    }
+  ]
+}

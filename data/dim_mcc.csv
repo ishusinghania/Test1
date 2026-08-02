@@ -1,0 +1,15 @@
+mcc_code,description,value_tier_prior,purpose_code
+5411,Grocery,MICRO,
+5812,F&B / Restaurant,LOW,
+5999,Retail - General,LOW,
+7011,Hotel,HIGH,
+4111,Transit,MICRO,
+5309,Duty Free,HIGH,
+5944,Jewellery,HIGH,
+5300,Wholesale/Luxury,HIGH,
+8220,Education - University,MID,S0305
+8062,Hospital/Medical,MID,S1301
+8099,Medical Services,MID,S1301
+5310,Department Store,MID,
+7991,Tourist Attraction/Museum,LOW,
+5941,Souvenir/Sporting Goods,LOW,

@@ -1,0 +1,14 @@
+{
+  "n_train": 17268,
+  "n_test": 7401,
+  "auuc_uplift_model": 98.91478,
+  "auuc_propensity_baseline": 117.43201,
+  "uplift_beats_propensity_on_auuc": false,
+  "top_decile_tauhat_vs_tautrue_corr": -0.0567,
+  "overall_tauhat_vs_tautrue_corr": 0.0085,
+  "acceptance_criterion_top_decile_corr_ge_0.6": false,
+  "sleeping_dog_recall_at_0": 0.2772,
+  "mean_tau_true": 0.0115,
+  "mean_tau_hat": 0.0451,
+  "leakage_guard_passed": true
+}
